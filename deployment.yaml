@@ -23,7 +23,7 @@ spec:
           type: RuntimeDefault
       containers:
       - name: grade-submission-api
-        image: ghcr.io/bola-pixel/kubernetes-cicd-tutorial:8a81bb5fa22ff2a2adad48328cf3836b6f629f28
+        image: ghcr.io/bola-pixel/kubernetes-cicd-tutorial:ec37b2c5b5110c6919cd7cd1e561ab541af1b78e
         ports:
         - containerPort: 3000
         securityContext:
