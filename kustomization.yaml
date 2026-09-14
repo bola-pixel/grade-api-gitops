@@ -2,9 +2,10 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - deployment.yaml
-  - service.yaml
+- deployment.yaml
+- service.yaml
 
 images:
-  - name: ghcr.io/bola-pixel/kubernetes-cicd-tutorial
-    newTag: ec37b2c5b5110c6919cd7cd1e561ab541af1b78e
+- name: ghcr.io/bola-pixel/kubernetes-cicd-tutorial
+  newName: ghcr.io/bola-pixel/kubernetes-cicd-tutorial
+  newTag: ddb7beb52b34249dbd61fb5c5e23fe4c990fbfb2
