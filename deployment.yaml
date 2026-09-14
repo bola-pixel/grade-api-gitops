@@ -15,11 +15,26 @@ spec:
     spec:
       imagePullSecrets:
       - name: ghcr-secret
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        fsGroup: 1000
+        seccompProfile:
+          type: RuntimeDefault
       containers:
       - name: grade-submission-api
         image: ghcr.io/bola-pixel/kubernetes-cicd-tutorial:8a81bb5fa22ff2a2adad48328cf3836b6f629f28
         ports:
         - containerPort: 3000
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop:
+            - ALL
+        volumeMounts:
+        - name: tmp
+          mountPath: /tmp
         resources:
           limits:
             memory: "256Mi"
@@ -27,6 +42,9 @@ spec:
           requests:
             memory: "128Mi"
             cpu: "250m"
+      volumes:
+      - name: tmp
+        emptyDir: {}
 ---
 apiVersion: v1
 kind: Service
